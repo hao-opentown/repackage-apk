@@ -1,4 +1,7 @@
-rm -rf ./dist weixin_complete.zip weixin_complete.apk weixin_process.apk
+rm -rf ./verify_dir weixin_complete.zip weixin_complete.apk weixin_process.apk
+
+mv dist.apk dist.zip
+unzip -o dist.zip -d .
 
 cp ../weixin_660.apk weixin_process.apk
 
@@ -12,4 +15,4 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.
 $ANDROID_HOME/build-tools/23.0.2/zipalign -f -v 4 weixin_process.apk weixin_complete.apk
 
 cp weixin_complete.apk weixin_complete.zip
-unzip -o weixin_complete.zip -d dist
+unzip -o weixin_complete.zip -d verify_dir
